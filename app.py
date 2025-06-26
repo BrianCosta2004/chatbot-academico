@@ -20,7 +20,9 @@ def chat():
             model='llama3',
             messages=[
                 {"role": "system",
-                 "content": f"Você é um assistente com acesso à agenda do usuário. Aqui estão os eventos do dia: {eventos} caso necessário, se a solicitação do usuário não necessitar da agenda, então apenas responda o que foi solicitado e responda tudo em português-br"},
+                 "content": f"Você é um assistente com acesso à agenda do usuário. Aqui estão os eventos do dia: {eventos} caso necessário, "
+                            f"se a solicitação do usuário não necessitar da agenda, então apenas responda o que foi solicitado e responda "
+                            f"tudo em português-br"},
                 {"role": "user", "content": user_input}
             ]
         )
