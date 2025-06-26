@@ -10,24 +10,24 @@ function sendMessage() {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ message })
-})
-.then(async response => {
-    if (!response.ok) {
-        const errorText = await response.text();
-        throw new Error(errorText || "Erro desconhecido no servidor.");
-    }
-    return response.json();
-})
-.then(data => {
-    if (data.reply) {
-        appendMessage("Assistente", data.reply);
-    } else {
-        appendMessage("Assistente", "Erro ao responder.");
-    }
-})
-.catch(err => {
-    appendMessage("Assistente", "Erro de conexão com o servidor: " + err.message);
-});
+    })
+    .then(async response => {
+        if (!response.ok) {
+            const errorText = await response.text();
+            throw new Error(errorText || "Erro desconhecido no servidor.");
+        }
+        return response.json();
+    })
+    .then(data => {
+        if (data.reply) {
+            appendMessage("Assistente", data.reply);
+        } else {
+            appendMessage("Assistente", "Erro ao responder.");
+        }
+    })
+    .catch(err => {
+        appendMessage("Assistente", "Erro de conexão com o servidor: " + err.message);
+    });
 }
 
 function appendMessage(sender, text) {
